@@ -112,6 +112,8 @@ function RegistrationForm({ onSuccess }: { onSuccess: () => void }) {
                 con strumenti forensi (Wireshark e altri software di analisi di rete) per l'identificazione territoriale
                 e tecnica di ogni visitatore. Eventuali soggetti collegati ad organizzazioni criminali che tentino di
                 accedere a questa pagina saranno identificati e segnalati alle Autorità competenti.
+                I dati di tracciamento e le informazioni raccolte potranno essere richiesti e forniti
+                soltanto ad organi di Polizia autorizzati dall'Autorità Giudiziaria competente in Italia.
               </p>
             </div>
           </div>
