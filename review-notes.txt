@@ -1,0 +1,26 @@
+Review della pagina - 2026-05-01
+
+La pagina è completa e funzionante con tutte le sezioni:
+1. Header con navigazione e link al sito principale
+2. Sezione Psico-Supporto con:
+   - Badge "Nuovo Servizio Gratuito"
+   - Titolo e sottotitolo
+   - Blocco intro
+   - 6 card tecniche (Ipnosi Cognitiva, Sovraccarico Informativo, Gamification, Falsa Intimità, Isolamento dalla Banca, Trappola del Bonus)
+   - Citazione dell'Avv. Stanca
+   - Sezione "Come ti aiutiamo" con 4 punti
+   - Blocco "Il Team" con 4 feature
+   - Blocco "Petizioni al Parlamento Europeo"
+3. Sezione Buone Notizie con:
+   - Badge "Giustizia in Azione"
+   - 6 card notizie (Trade Scam, Cagliostro, Call Centre Albania, Crypto Fraud Network, Investment Scam, Report Polizia Postale 2025)
+   - 4 blocchi statistiche
+   - Messaggio finale motivazionale
+4. CTA con pulsante "Avvia Psico-Supporto"
+5. Footer con contatti e link
+
+Tutto il contenuto dal file HTML originale è stato fedelmente riprodotto.
+Lo stile è coerente con il sito principale (dark theme, accenti ciano e verde).
+La pagina è responsive e ben strutturata.
+
+Pronto per checkpoint e deploy.

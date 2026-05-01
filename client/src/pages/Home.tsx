@@ -1,25 +1,25 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
-
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * Design: Cyber-Forensic Noir
+ * Dark theme with cyan (#00d4ff) and green (#00c853) accents
+ * Matching the style of avv-stanca-firenze.manus.space
  */
-export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
 
+import { PsicoSupportoSection } from "@/components/PsicoSupportoSection";
+import { BuoneNotizieSection } from "@/components/BuoneNotizieSection";
+import { CTASection } from "@/components/CTASection";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+
+export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen" style={{ background: "linear-gradient(180deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%)" }}>
+      <Header />
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        <PsicoSupportoSection />
+        <BuoneNotizieSection />
+        <CTASection />
       </main>
+      <Footer />
     </div>
   );
 }
