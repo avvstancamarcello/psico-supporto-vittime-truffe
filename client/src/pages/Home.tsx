@@ -10,14 +10,14 @@ import { CTASection } from "@/components/CTASection";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ChatAccessPopup } from "@/components/ChatAccessPopup";
-import { BookBanner } from "@/components/BookBanner";
+import { SectionNav } from "@/components/SectionNav";
 
 export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: "linear-gradient(180deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%)" }}>
       <Header />
       <ChatAccessPopup />
-      <BookBanner />
+      <SectionNav />
       <main>
         <PsicoSupportoSection />
         <BuoneNotizieSection />
