@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================================
+  DOCUMENTAZIONE COPYRIGHT — HandsOverlay Design
+  Progetto: Psico-Supporto alle Vittime di Truffe
+  Autore: Avv. Marcello Stanca — Studio Legale, Firenze
+  Data creazione: 3 Maggio 2026
+  Versione: a77f3387
+  
+  Questo file SVG documenta la disposizione, le forme, i colori e le 
+  proprietà di tutti gli oggetti grafici creati per l'overlay animato 
+  sull'immagine delle "Due Mani" (mano rossa scammer vs mano ciano difesa).
+  
+  Importabile direttamente in Figma, Adobe Illustrator, Sketch, Inkscape.
+  ============================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg" 
+     viewBox="0 0 600 400" 
+     width="1200" 
+     height="800"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <!-- ============================================ -->
+  <!-- SFONDO SCURO (background dell'immagine)      -->
+  <!-- ============================================ -->
+  <rect x="0" y="0" width="600" height="400" fill="#0a1628" rx="12" ry="12" />
+
+  <!-- ============================================ -->
+  <!-- LAYER 0: IMMAGINE DI SFONDO (placeholder)    -->
+  <!-- L'immagine generata delle due mani:           -->
+  <!-- - Mano sinistra: rossa, pixelata/frammentata  -->
+  <!-- - Mano destra: ciano, luminosa, fluida         -->
+  <!-- - Le dita si incontrano al centro              -->
+  <!-- Dimensioni: 600x400 viewBox                    -->
+  <!-- ============================================ -->
+  <g id="layer-0-background-placeholder" opacity="0.15">
+    <!-- Rappresentazione schematica mano sinistra (scammer) -->
+    <g id="mano-rossa-sinistra-schema">
+      <path d="M 50 200 L 120 180 L 180 170 L 230 175 L 270 190 L 290 200 L 270 210 L 230 220 L 180 225 L 120 215 Z" 
+            fill="#ff3333" opacity="0.6" stroke="#cc2200" stroke-width="1"/>
+      <!-- Dita -->
+      <line x1="270" y1="190" x2="295" y2="195" stroke="#ff3333" stroke-width="3"/>
+    </g>
+    <!-- Rappresentazione schematica mano destra (difesa) -->
+    <g id="mano-ciano-destra-schema">
+      <path d="M 550 200 L 480 180 L 420 170 L 370 175 L 330 190 L 310 200 L 330 210 L 370 220 L 420 225 L 480 215 Z" 
+            fill="#00d4ff" opacity="0.6" stroke="#0099cc" stroke-width="1"/>
+      <!-- Dita -->
+      <line x1="330" y1="190" x2="305" y2="195" stroke="#00d4ff" stroke-width="3"/>
+    </g>
+    <!-- Punto di incontro dita -->
+    <circle cx="300" cy="197" r="8" fill="#ffcc00" opacity="0.4"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LAYER 1: CERVELLO ROSA EMOJI 3x              -->
+  <!-- Posizione: centro-basso (x:300, y:315)        -->
+  <!-- Dimensione: fontSize 72 (3x standard 24)      -->
+  <!-- Colore: rosa con drop-shadow                   -->
+  <!-- ============================================ -->
+  <g id="layer-1-cervello">
+    <!-- Cerchio di sfondo per il cervello -->
+    <circle cx="300" cy="315" r="45" fill="none" stroke="#ff6b9d" stroke-width="1" opacity="0.3"/>
+    <!-- Rappresentazione del cervello (emoji 🧠 placeholder) -->
+    <circle cx="300" cy="315" r="32" fill="#ff8faf" opacity="0.85"/>
+    <text x="300" y="315" font-size="72" text-anchor="middle" dominant-baseline="central" opacity="0.95">🧠</text>
+    <!-- Annotazione -->
+    <text x="300" y="375" font-size="8" fill="#ff6b9d" text-anchor="middle" font-family="monospace" opacity="0.7">
+      CERVELLO ROSA — fontSize:72 — drop-shadow: 0 0 8px rgba(255,107,157,0.4)
+    </text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LAYER 2: LINEA ELETTRICA CIANO                -->
+  <!-- Parte dalla punta del dito indice destro       -->
+  <!-- Scende verso il cervello con effetto zigzag    -->
+  <!-- Colore: #00d4ff (ciano)                        -->
+  <!-- Filtro: electric-glow (Gaussian blur 2.5)      -->
+  <!-- ============================================ -->
+  <g id="layer-2-linea-elettrica">
+    <!-- Filtro glow -->
+    <defs>
+      <filter id="doc-electric-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    
+    <!-- Curva principale -->
+    <path d="M 380 195 C 370 210, 360 225, 350 245 C 340 260, 330 270, 320 280"
+          fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"
+          opacity="0.7" filter="url(#doc-electric-glow)"/>
+    
+    <!-- Zigzag secondario -->
+    <path d="M 375 200 L 370 208 L 378 212 L 365 225 L 373 228 L 358 245 L 366 248 L 350 260 L 345 268 L 330 278"
+          fill="none" stroke="#00d4ff" stroke-width="0.8" stroke-linecap="round"
+          opacity="0.4" filter="url(#doc-electric-glow)"/>
+    
+    <!-- Annotazione -->
+    <text x="395" y="240" font-size="7" fill="#00d4ff" font-family="monospace" opacity="0.6">
+      LINEA ELETTRICA — #00d4ff — strokeWidth:1.5/0.8
+    </text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LAYER 3: SCUDO PROTETTIVO SVG CIANO           -->
+  <!-- Forma organica che avvolge il cervello         -->
+  <!-- Colore bordo: #00d4ff — strokeWidth: 2         -->
+  <!-- Riempimento: #00d4ff opacity 0.06              -->
+  <!-- Scala: 0.9 (ridotto 10%)                       -->
+  <!-- Filtro: shield-glow (Gaussian blur 4)          -->
+  <!-- ============================================ -->
+  <g id="layer-3-scudo-protettivo-svg">
+    <defs>
+      <filter id="doc-shield-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    
+    <g filter="url(#doc-shield-glow)" transform="translate(300, 310) scale(0.9) translate(-300, -310)">
+      <!-- Bordo scudo -->
+      <path d="M 245 270 C 230 285, 225 305, 232 325 C 238 342, 255 358, 300 365 C 345 358, 362 342, 368 325 C 375 305, 370 285, 355 270 C 345 260, 325 254, 300 252 C 275 254, 255 260, 245 270 Z"
+            fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+      <!-- Riempimento scudo -->
+      <path d="M 252 275 C 238 288, 234 306, 240 322 C 245 336, 260 350, 300 356 C 340 350, 355 336, 360 322 C 366 306, 362 288, 348 275 C 340 266, 322 261, 300 259 C 278 261, 260 266, 252 275 Z"
+            fill="#00d4ff" opacity="0.06"/>
+      <!-- Scintille -->
+      <circle cx="240" cy="290" r="2" fill="#00d4ff" opacity="0.3"/>
+      <circle cx="360" cy="290" r="2" fill="#00d4ff" opacity="0.3"/>
+      <circle cx="300" cy="368" r="2" fill="#00d4ff" opacity="0.3"/>
+      <circle cx="250" cy="335" r="2" fill="#00d4ff" opacity="0.3"/>
+      <circle cx="350" cy="335" r="2" fill="#00d4ff" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LAYER 4: SIMBOLI VALUTA (perdite finanziarie) -->
+  <!-- Posizione: intorno alla mano rossa sinistra    -->
+  <!-- Colori: #ffd700 (oro) e #4ade80 (verde)        -->
+  <!-- Font: monospace, bold                           -->
+  <!-- Filtro: currency-glow (Gaussian blur 1.5)       -->
+  <!-- ============================================ -->
+  <g id="layer-4-simboli-valuta">
+    <defs>
+      <filter id="doc-currency-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    
+    <g filter="url(#doc-currency-glow)">
+      <!-- Sopra il polso sinistro -->
+      <text x="85" y="145" font-size="14" fill="#ffd700" opacity="0.7" font-family="monospace" font-weight="bold">€</text>
+      <text x="55" y="170" font-size="11" fill="#4ade80" opacity="0.6" font-family="monospace" font-weight="bold">$</text>
+      <text x="110" y="125" font-size="10" fill="#ffd700" opacity="0.5" font-family="monospace" font-weight="bold">£</text>
+      <text x="130" y="155" font-size="12" fill="#4ade80" opacity="0.65" font-family="monospace" font-weight="bold">₿</text>
+      <text x="65" y="130" font-size="9" fill="#ffd700" opacity="0.45" font-family="monospace" font-weight="bold">€</text>
+      <text x="100" y="160" font-size="10" fill="#4ade80" opacity="0.5" font-family="monospace" font-weight="bold">$</text>
+      <!-- Sotto il polso sinistro -->
+      <text x="60" y="280" font-size="12" fill="#ffd700" opacity="0.6" font-family="monospace" font-weight="bold">$</text>
+      <text x="90" y="305" font-size="14" fill="#4ade80" opacity="0.7" font-family="monospace" font-weight="bold">€</text>
+      <text x="40" y="260" font-size="10" fill="#ffd700" opacity="0.5" font-family="monospace" font-weight="bold">₿</text>
+      <text x="115" y="285" font-size="11" fill="#4ade80" opacity="0.55" font-family="monospace" font-weight="bold">£</text>
+      <text x="70" y="320" font-size="9" fill="#ffd700" opacity="0.45" font-family="monospace" font-weight="bold">$</text>
+      <text x="45" y="295" font-size="10" fill="#4ade80" opacity="0.5" font-family="monospace" font-weight="bold">€</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LAYER 5: SCUDO MS FINANCIAL DEFENSE (immagine) -->
+  <!-- Posizione: angolo inferiore destro              -->
+  <!-- CSS: bottom:8%, right:5% (sm: bottom:10%, right:6%) -->
+  <!-- Dimensioni: w:50px (sm:65px, md:75px)           -->
+  <!-- Espansione: scale(1) → scale(1.25) in 2s       -->
+  <!-- Hover pulsante: scale 1→1.06 in 4s infinite     -->
+  <!-- Drop-shadow: 0 0 12px rgba(0,100,255,0.6)      -->
+  <!-- ============================================ -->
+  <g id="layer-5-scudo-financial-defense">
+    <!-- Posizione rappresentativa nell'angolo inferiore destro -->
+    <rect x="520" y="320" width="60" height="64" rx="8" ry="8" fill="#0a1a3a" stroke="#3366cc" stroke-width="2" opacity="0.9"/>
+    <!-- Scudo interno -->
+    <path d="M 550 332 L 565 340 L 565 355 L 550 365 L 535 355 L 535 340 Z" fill="#2244aa" stroke="#6699ff" stroke-width="1.5"/>
+    <!-- Simbolo $ -->
+    <text x="550" y="353" font-size="16" fill="#ffd700" text-anchor="middle" dominant-baseline="central" font-weight="bold">$</text>
+    <!-- Testo MS -->
+    <text x="543" y="360" font-size="5" fill="#4ade80" font-weight="bold">M</text>
+    <text x="554" y="360" font-size="5" fill="#4ade80" font-weight="bold">S</text>
+    <!-- Testo FINANCIAL DEFENSE -->
+    <text x="550" y="370" font-size="4.5" fill="white" text-anchor="middle" font-weight="bold">FINANCIAL</text>
+    <text x="550" y="376" font-size="4.5" fill="white" text-anchor="middle" font-weight="bold">DEFENSE</text>
+    <!-- Orbite dorate -->
+    <ellipse cx="550" cy="352" rx="28" ry="24" fill="none" stroke="#daa520" stroke-width="0.8" opacity="0.6"/>
+    <ellipse cx="550" cy="352" rx="24" ry="20" fill="none" stroke="#daa520" stroke-width="0.6" opacity="0.4"/>
+    <!-- Pallini colorati sulle orbite -->
+    <circle cx="522" cy="352" r="2.5" fill="#ffd700"/>
+    <circle cx="578" cy="352" r="2.5" fill="#4ade80"/>
+    <circle cx="550" cy="376" r="2.5" fill="#ff3333"/>
+    
+    <!-- Annotazione posizione -->
+    <text x="550" y="395" font-size="6" fill="#6699ff" text-anchor="middle" font-family="monospace" opacity="0.7">
+      SCUDO — bottom:8% right:5% — scale 1→1.25 (2s) — pulse 4s
+    </text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LAYER 6: FRAMMENTAZIONE MANO ROSSA GRANDE     -->
+  <!-- Area: lato sinistro (0-40% larghezza, 20-80% altezza) -->
+  <!-- 32 frammenti piccoli (6-14px) + 12 frammenti grandi (10-22px) -->
+  <!-- Colori: #ff3333, #ff5522, #cc2200, #ff7744     -->
+  <!-- Dispersione: verso sinistra e tutte le direzioni -->
+  <!-- Durata: 2 secondi con cubic-bezier              -->
+  <!-- Flash esplosivo: radial-gradient rosso 0.6s      -->
+  <!-- ============================================ -->
+  <g id="layer-6-frammentazione">
+    <!-- Frammenti piccoli (campione rappresentativo) -->
+    <rect x="60" y="140" width="8" height="6" fill="#ff3333" opacity="0.8" transform="rotate(15, 60, 140)"/>
+    <rect x="90" y="160" width="10" height="5" fill="#ff5522" opacity="0.7" transform="rotate(-25, 90, 160)"/>
+    <rect x="120" y="180" width="7" height="8" fill="#cc2200" opacity="0.75" transform="rotate(40, 120, 180)"/>
+    <rect x="45" y="200" width="9" height="6" fill="#ff7744" opacity="0.65" transform="rotate(-10, 45, 200)"/>
+    <rect x="75" y="220" width="6" height="7" fill="#ff3333" opacity="0.8" transform="rotate(30, 75, 220)"/>
+    <rect x="105" y="240" width="8" height="5" fill="#ff5522" opacity="0.7" transform="rotate(-35, 105, 240)"/>
+    <rect x="55" y="260" width="10" height="8" fill="#cc2200" opacity="0.75" transform="rotate(20, 55, 260)"/>
+    <rect x="85" y="280" width="7" height="6" fill="#ff7744" opacity="0.65" transform="rotate(-15, 85, 280)"/>
+    
+    <!-- Frammenti grandi (pezzi di polso/mano) -->
+    <polygon points="70,170 85,165 90,178 75,182" fill="#ff2222" opacity="0.8"/>
+    <polygon points="100,200 118,195 120,210 105,215" fill="#ff5533" opacity="0.75"/>
+    <polygon points="50,230 68,225 72,242 55,245" fill="#dd1100" opacity="0.8"/>
+    <polygon points="80,250 95,248 100,262 82,265" fill="#ff2222" opacity="0.7"/>
+    
+    <!-- Flash esplosivo (area) -->
+    <ellipse cx="120" cy="220" rx="100" ry="80" fill="url(#explosion-gradient)" opacity="0.25"/>
+    <defs>
+      <radialGradient id="explosion-gradient">
+        <stop offset="0%" stop-color="#ff3322" stop-opacity="0.3"/>
+        <stop offset="70%" stop-color="#ff3322" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    
+    <!-- Annotazione -->
+    <text x="120" y="340" font-size="6" fill="#ff5533" text-anchor="middle" font-family="monospace" opacity="0.7">
+      FRAMMENTAZIONE — 32+12 frammenti — 2s cubic-bezier — flash 0.6s
+    </text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LEGENDA COLORI                                -->
+  <!-- ============================================ -->
+  <g id="legenda" transform="translate(10, 10)">
+    <rect x="0" y="0" width="180" height="130" fill="#0a1628" stroke="#1a3050" stroke-width="1" rx="4"/>
+    <text x="10" y="18" font-size="9" fill="white" font-weight="bold" font-family="sans-serif">LEGENDA COLORI</text>
+    
+    <rect x="10" y="28" width="12" height="8" fill="#00d4ff"/>
+    <text x="28" y="35" font-size="7" fill="#aaa" font-family="monospace">#00d4ff — Ciano (difesa, scudo)</text>
+    
+    <rect x="10" y="42" width="12" height="8" fill="#ff6b9d"/>
+    <text x="28" y="49" font-size="7" fill="#aaa" font-family="monospace">#ff6b9d — Rosa (cervello)</text>
+    
+    <rect x="10" y="56" width="12" height="8" fill="#ff3333"/>
+    <text x="28" y="63" font-size="7" fill="#aaa" font-family="monospace">#ff3333 — Rosso (scammer, frammenti)</text>
+    
+    <rect x="10" y="70" width="12" height="8" fill="#ffd700"/>
+    <text x="28" y="77" font-size="7" fill="#aaa" font-family="monospace">#ffd700 — Oro (valuta €£)</text>
+    
+    <rect x="10" y="84" width="12" height="8" fill="#4ade80"/>
+    <text x="28" y="91" font-size="7" fill="#aaa" font-family="monospace">#4ade80 — Verde (valuta $₿)</text>
+    
+    <rect x="10" y="98" width="12" height="8" fill="#0a1628"/>
+    <text x="28" y="105" font-size="7" fill="#aaa" font-family="monospace">#0a1628 — Sfondo scuro</text>
+    
+    <rect x="10" y="112" width="12" height="8" fill="#2244aa"/>
+    <text x="28" y="119" font-size="7" fill="#aaa" font-family="monospace">#2244aa — Scudo Financial Defense</text>
+  </g>
+
+</svg>
