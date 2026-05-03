@@ -9,20 +9,19 @@ import { BuoneNotizieSection } from "@/components/BuoneNotizieSection";
 import { CTASection } from "@/components/CTASection";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { RegistrationGate } from "@/components/RegistrationGate";
+import { ChatAccessPopup } from "@/components/ChatAccessPopup";
 
 export default function Home() {
   return (
-    <RegistrationGate>
-      <div className="min-h-screen" style={{ background: "linear-gradient(180deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%)" }}>
-        <Header />
-        <main>
-          <PsicoSupportoSection />
-          <BuoneNotizieSection />
-          <CTASection />
-        </main>
-        <Footer />
-      </div>
-    </RegistrationGate>
+    <div className="min-h-screen" style={{ background: "linear-gradient(180deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%)" }}>
+      <Header />
+      <main>
+        <PsicoSupportoSection />
+        <BuoneNotizieSection />
+        <CTASection />
+      </main>
+      <Footer />
+      <ChatAccessPopup />
+    </div>
   );
 }

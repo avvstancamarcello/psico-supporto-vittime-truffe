@@ -4,28 +4,38 @@ export function PsicoSupportoSection() {
       <div className="max-w-[1000px] mx-auto">
 
         {/* Header */}
-        <header className="text-center mb-14 animate-fadeInUp">
+        <header className="text-center mb-6 animate-fadeInUp">
           <div className="inline-block bg-[#00d4ff]/10 border border-[#00d4ff]/30 rounded-full px-5 py-2 text-xs text-[#00d4ff] uppercase tracking-[2px] mb-5">
             Nuovo Servizio Gratuito
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-0 leading-tight">
             Psico-Supporto alle <span className="text-[#00d4ff]">Vittime di Truffe</span>
           </h1>
+        </header>
+
+        {/* Immagine mani — subito sotto il titolo */}
+        <div className="flex justify-center mb-6 animate-fadeInUp">
+          <div className="w-full max-w-[600px] rounded-2xl overflow-hidden border border-[#00d4ff]/15">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587145031/5yj3D9dfw7zdStNbdyMzWk/hands-reaching-cN3pQFt7yYdnix6UuNvKPL.webp"
+              alt="Due mani che si tendono l'una verso l'altra — simbolo di supporto e connessione"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Sottotitoli */}
+        <div className="text-center mb-6 animate-fadeInUp">
           <p className="text-lg sm:text-xl text-white/60 italic max-w-[600px] mx-auto">
             Capire il "perché" è il primo passo per guarire
           </p>
-        </header>
+        </div>
 
         {/* Frase chiave — massima visibilità */}
-        <div className="text-center mb-8 animate-fadeInUp">
+        <div className="text-center mb-10 animate-fadeInUp">
           <span className="block text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0099cc] bg-clip-text text-transparent leading-snug">
             Non sei stato ingenuo. Sei stato manipolato da professionisti dell'inganno.
           </span>
-        </div>
-
-        {/* Icona mani — elemento iconico */}
-        <div className="text-center mb-10 animate-fadeInUp">
-          <span className="text-6xl sm:text-7xl inline-block" role="img" aria-label="Due mani che si stringono">🤲</span>
         </div>
 
         {/* Intro Block */}
