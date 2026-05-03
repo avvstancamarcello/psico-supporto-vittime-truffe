@@ -47,6 +47,27 @@ export function Footer() {
           Il servizio di Psico-Supporto AI non sostituisce un percorso terapeutico professionale.
           Per emergenze psicologiche contattare il Telefono Amico (02 2327 2327) o il 112.
         </p>
+        <nav className="mt-6 flex flex-wrap items-center justify-center gap-3 text-[10px] text-white/15" aria-label="Argomenti correlati">
+          <span>Truffe finanziarie online</span>
+          <span>·</span>
+          <span>Trading online truffa</span>
+          <span>·</span>
+          <span>Vittime truffe finanziarie</span>
+          <span>·</span>
+          <span>Recupero fondi truffa</span>
+          <span>·</span>
+          <span>Avvocato truffe Firenze</span>
+          <span>·</span>
+          <span>Broker truffa</span>
+          <span>·</span>
+          <span>Piattaforma trading falsa</span>
+          <span>·</span>
+          <span>Denuncia truffa finanziaria</span>
+          <span>·</span>
+          <span>Manipolazione cognitiva</span>
+          <span>·</span>
+          <span>Truffe criptovalute</span>
+        </nav>
       </div>
     </footer>
   );

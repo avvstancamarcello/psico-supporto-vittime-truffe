@@ -7,7 +7,7 @@ import { SectionLabel } from "@/components/SectionNav";
 
 export function BuoneNotizieSection() {
   return (
-    <section id="buone-notizie" className="py-16 sm:py-20 px-4 sm:px-5 relative overflow-hidden">
+    <section id="buone-notizie" className="py-16 sm:py-20 px-4 sm:px-5 relative overflow-hidden" aria-label="Buone notizie: arresti e operazioni di polizia contro truffe finanziarie online">
       <div className="max-w-[1000px] mx-auto">
 
         {/* === SEZ 8: Buone Notizie === */}

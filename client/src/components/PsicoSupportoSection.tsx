@@ -9,7 +9,7 @@ import { BookBannerSlim } from "@/components/BookBannerSlim";
 
 export function PsicoSupportoSection() {
   return (
-    <section id="psico-supporto" className="pt-4 pb-16 sm:pb-20 px-4 sm:px-5 relative overflow-hidden">
+    <section id="psico-supporto" className="pt-4 pb-16 sm:pb-20 px-4 sm:px-5 relative overflow-hidden" aria-label="Psico-Supporto alle vittime di truffe finanziarie online">
       <div className="max-w-[1000px] mx-auto">
 
         {/* === SEZ 1: Titolo === */}
@@ -19,6 +19,7 @@ export function PsicoSupportoSection() {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-0 leading-tight">
               Psico-Supporto alle <span className="text-[#00d4ff]">Vittime di Truffe</span>
             </h1>
+            <p className="text-sm text-white/30 mt-2">Assistenza gratuita per vittime di truffe finanziarie e trading online fraudolento</p>
           </header>
 
           {/* Immagine mani */}
@@ -26,7 +27,10 @@ export function PsicoSupportoSection() {
             <div className="w-full max-w-[600px] rounded-2xl overflow-hidden border border-[#00d4ff]/15">
               <img
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587145031/5yj3D9dfw7zdStNbdyMzWk/hands-reaching-cN3pQFt7yYdnix6UuNvKPL.webp"
-                alt="Due mani che si tendono l'una verso l'altra — simbolo di supporto e connessione"
+                alt="Psico-supporto vittime truffe finanziarie online - due mani che si tendono in segno di aiuto e solidarietà"
+                loading="eager"
+                width="600"
+                height="400"
                 className="w-full h-auto object-cover"
               />
             </div>
