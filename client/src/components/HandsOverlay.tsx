@@ -289,7 +289,7 @@ export function HandsOverlay() {
           animationDone ? "opacity-100" : "opacity-0"
         }`}
       >
-        {/* Mano rossa che si ferma — area centrale superiore, a destra dello scudo */}
+        {/* Mano rossa — piccola, in basso a sinistra del cervello */}
         <picture>
           <source
             media="(max-width: 640px)"
@@ -298,14 +298,14 @@ export function HandsOverlay() {
           <img
             src="/manus-storage/redhand-desktop_01cd5e23.webp"
             alt="Mano rossa criminale che si ferma davanti allo scudo"
-            className="absolute top-[8%] left-[50%] -translate-x-1/2 w-[30%] sm:w-[26%] rounded-lg opacity-85 drop-shadow-[0_0_12px_rgba(255,50,50,0.5)]"
+            className="absolute bottom-[12%] left-[18%] w-[15%] sm:w-[13%] rounded-md opacity-80 drop-shadow-[0_0_8px_rgba(255,50,50,0.4)]"
             loading="lazy"
-            width="170"
-            height="150"
+            width="90"
+            height="80"
           />
         </picture>
 
-        {/* Scudo MS Financial Defense — posizionato a destra */}
+        {/* Scudo MS Financial Defense — piccolo, in basso a destra del cervello */}
         <picture>
           <source
             media="(max-width: 640px)"
@@ -314,10 +314,10 @@ export function HandsOverlay() {
           <img
             src="/manus-storage/shield-desktop_b8780f63.webp"
             alt="Scudo MS Financial Defense - protezione finanziaria"
-            className="absolute bottom-[8%] right-[5%] w-[25%] sm:w-[22%] rounded-lg opacity-90 drop-shadow-[0_0_12px_rgba(0,100,255,0.5)]"
+            className="absolute bottom-[12%] right-[18%] w-[14%] sm:w-[12%] rounded-md opacity-85 drop-shadow-[0_0_8px_rgba(0,100,255,0.4)]"
             loading="lazy"
-            width="170"
-            height="180"
+            width="90"
+            height="95"
           />
         </picture>
       </div>
