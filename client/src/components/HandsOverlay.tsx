@@ -3,10 +3,11 @@
  * 1. Cervello rosa emoji 3x — spostato 30px in alto
  * 2. Linea elettrica ciano + scudo SVG (senza contatto col cervello) — 2 loop
  * 3. Simboli valuta gialli/verdi intorno alla mano rossa (perdite finanziarie)
- * 4. Scudo "MS Financial Defense" — in basso a destra, allineato al cervello,
- *    centrato tra cervello e bordo destro. Espansione lenta a 125% + hover pulsante.
- * 5. Mano rossa — slide dall'alto, poi si disgrega in esplosione di frazioni rosse (2s)
- *    → Vittoria dello scudo contro lo scammer.
+ * 4. Scudo "MS Financial Defense" — angolo inferiore destro, diagonale 45%,
+ *    lontano dalla mano/dita/polso destro. Espansione lenta a 125% + hover pulsante.
+ * 5. Frammentazione della MANO ROSSA GRANDE DI SINISTRA (nell'immagine principale):
+ *    il polso e la mano si frammentano in pezzi rossi, evocando l'attacco di autodifesa
+ *    della mano destra ciano e dello scudo contro lo scammer.
  */
 
 import { useEffect, useState, useRef } from "react";
@@ -14,23 +15,37 @@ import { useEffect, useState, useRef } from "react";
 export function HandsOverlay() {
   const [animationDone, setAnimationDone] = useState(false);
   const [shieldExpanded, setShieldExpanded] = useState(false);
-  const [handExploding, setHandExploding] = useState(false);
-  const [handGone, setHandGone] = useState(false);
-  const particlesRef = useRef<Array<{ x: number; y: number; rot: number; scale: number; delay: number }>>([]);
+  const [fragmenting, setFragmenting] = useState(false);
 
-  // Genera particelle casuali per l'esplosione della mano rossa
-  if (particlesRef.current.length === 0) {
-    particlesRef.current = Array.from({ length: 24 }, () => ({
-      x: (Math.random() - 0.5) * 200,
-      y: (Math.random() - 0.5) * 200,
-      rot: Math.random() * 360,
-      scale: 0.3 + Math.random() * 0.7,
-      delay: Math.random() * 0.3,
-    }));
+  // Genera particelle per la frammentazione della mano rossa grande (sinistra)
+  // Posizionate nell'area della mano rossa: lato sinistro dell'immagine
+  const fragmentsRef = useRef<Array<{
+    originX: number; originY: number;
+    destX: number; destY: number;
+    rot: number; scale: number; delay: number;
+    color: string;
+  }>>([]);
+
+  if (fragmentsRef.current.length === 0) {
+    fragmentsRef.current = Array.from({ length: 32 }, (_, i) => {
+      // Frammenti sparsi nell'area della mano rossa sinistra (0-40% larghezza, 20-80% altezza)
+      const originX = 5 + Math.random() * 35; // % dalla sinistra
+      const originY = 20 + Math.random() * 55; // % dall'alto
+      return {
+        originX,
+        originY,
+        destX: originX + (Math.random() - 0.7) * 40, // si disperdono verso sinistra e in tutte le direzioni
+        destY: originY + (Math.random() - 0.5) * 50,
+        rot: Math.random() * 720 - 360,
+        scale: 0.2 + Math.random() * 0.6,
+        delay: Math.random() * 0.5,
+        color: i % 4 === 0 ? "#ff3333" : i % 4 === 1 ? "#ff5522" : i % 4 === 2 ? "#cc2200" : "#ff7744",
+      };
+    });
   }
 
   useEffect(() => {
-    // Dopo 6s (fine loop animazione): mostra mano rossa + scudo
+    // Dopo 6s (fine loop animazione): segna fine animazione
     const timerDone = setTimeout(() => {
       setAnimationDone(true);
     }, 6000);
@@ -40,21 +55,15 @@ export function HandsOverlay() {
       setShieldExpanded(true);
     }, 8000);
 
-    // Dopo 9s: mano rossa inizia a disgregarsi
-    const timerExplode = setTimeout(() => {
-      setHandExploding(true);
+    // Dopo 9s: mano rossa grande inizia a frammentarsi
+    const timerFragment = setTimeout(() => {
+      setFragmenting(true);
     }, 9000);
-
-    // Dopo 11s: mano rossa completamente scomparsa
-    const timerGone = setTimeout(() => {
-      setHandGone(true);
-    }, 11000);
 
     return () => {
       clearTimeout(timerDone);
       clearTimeout(timerExpand);
-      clearTimeout(timerExplode);
-      clearTimeout(timerGone);
+      clearTimeout(timerFragment);
     };
   }, []);
 
@@ -313,13 +322,13 @@ export function HandsOverlay() {
       </svg>
 
       {/* ========================================= */}
-      {/* 4. SCUDO MS Financial Defense — in basso a destra, allineato al cervello */}
-      {/* Centrato nella distanza tra cervello e bordo destro */}
+      {/* 4. SCUDO MS Financial Defense — angolo inferiore destro */}
+      {/* Spostato sulla diagonale 45% verso l'angolo, lontano da mano/dita/polso */}
       {/* Espansione lenta a 125% + hover pulsante lento */}
       {/* ========================================= */}
       <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute bottom-[22%] right-[12%] sm:right-[15%]"
+          className="absolute bottom-[8%] right-[5%] sm:bottom-[10%] sm:right-[6%]"
           style={{
             transition: "transform 2s ease-out, opacity 1s ease-out",
             transform: shieldExpanded ? "scale(1.25)" : "scale(1)",
@@ -334,87 +343,93 @@ export function HandsOverlay() {
             <img
               src="/manus-storage/shield-desktop_b8780f63.webp"
               alt="Scudo MS Financial Defense - protezione finanziaria"
-              className="w-[60px] sm:w-[75px] md:w-[85px] rounded-md drop-shadow-[0_0_12px_rgba(0,100,255,0.6)]"
+              className="w-[50px] sm:w-[65px] md:w-[75px] rounded-md drop-shadow-[0_0_12px_rgba(0,100,255,0.6)]"
               style={{
-                animation: shieldExpanded ? "shieldPulse 3s ease-in-out infinite" : "none",
+                animation: shieldExpanded ? "shieldPulse 4s ease-in-out infinite" : "none",
               }}
               loading="eager"
-              width="85"
-              height="90"
+              width="75"
+              height="80"
             />
           </picture>
         </div>
       </div>
 
       {/* ========================================= */}
-      {/* 5. MANO ROSSA — slide dall'alto, poi disgregazione esplosiva */}
+      {/* 5. FRAMMENTAZIONE MANO ROSSA GRANDE DI SINISTRA */}
+      {/* Frammenti rossi sovrapposti all'area della mano rossa nell'immagine */}
+      {/* Si disperdono in 2 secondi evocando l'attacco di autodifesa */}
       {/* ========================================= */}
-      {!handGone && (
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            transition: animationDone ? "opacity 1s ease-out" : "none",
-            opacity: animationDone ? 1 : 0,
-          }}
-        >
-          {/* Mano rossa intera — visibile fino all'esplosione */}
-          {!handExploding && (
+      {fragmenting && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {fragmentsRef.current.map((f, i) => (
             <div
-              className="absolute top-[5%] left-[50%]"
+              key={`frag-${i}`}
+              className="absolute"
               style={{
-                transform: "translateX(-50%)",
-                transition: "all 1s ease-out",
-                opacity: animationDone ? 0.85 : 0,
+                left: `${f.originX}%`,
+                top: `${f.originY}%`,
+                width: `${6 + Math.random() * 8}px`,
+                height: `${4 + Math.random() * 6}px`,
+                backgroundColor: f.color,
+                boxShadow: `0 0 6px ${f.color}88, 0 0 12px ${f.color}44`,
+                borderRadius: Math.random() > 0.5 ? "1px" : "0px",
+                transition: `all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${f.delay}s`,
+                transform: `translate(${f.destX - f.originX}vw, ${f.destY - f.originY}vh) rotate(${f.rot}deg) scale(${f.scale})`,
+                opacity: 0,
               }}
-            >
-              <picture>
-                <source
-                  media="(max-width: 640px)"
-                  srcSet="/manus-storage/redhand-mobile_fb50b80a.webp"
-                />
-                <img
-                  src="/manus-storage/redhand-desktop_01cd5e23.webp"
-                  alt="Mano rossa criminale che si ferma prima dello scudo"
-                  className="w-[55px] sm:w-[70px] md:w-[80px] rounded-md drop-shadow-[0_0_10px_rgba(255,50,50,0.5)]"
-                  loading="lazy"
-                  width="80"
-                  height="72"
-                />
-              </picture>
-            </div>
-          )}
+            />
+          ))}
 
-          {/* Esplosione — frazioni rosse che si disperdono */}
-          {handExploding && (
-            <div
-              className="absolute top-[5%] left-[50%]"
-              style={{ transform: "translateX(-50%)" }}
-            >
-              {particlesRef.current.map((p, i) => (
-                <div
-                  key={`particle-${i}`}
-                  className="absolute w-[6px] h-[6px] sm:w-[8px] sm:h-[8px] rounded-sm"
-                  style={{
-                    backgroundColor: i % 3 === 0 ? "#ff3333" : i % 3 === 1 ? "#ff6644" : "#cc2200",
-                    boxShadow: "0 0 4px rgba(255, 50, 50, 0.6)",
-                    transition: `all 2s ease-out ${p.delay}s`,
-                    transform: handExploding
-                      ? `translate(${p.x}px, ${p.y}px) rotate(${p.rot}deg) scale(${p.scale})`
-                      : "translate(0, 0) rotate(0deg) scale(1)",
-                    opacity: handExploding ? 0 : 0.9,
-                  }}
-                />
-              ))}
-            </div>
-          )}
+          {/* Frammenti più grandi — pezzi di polso/mano */}
+          {Array.from({ length: 12 }, (_, i) => {
+            const originX = 8 + Math.random() * 30;
+            const originY = 25 + Math.random() * 50;
+            const destX = originX - 15 - Math.random() * 25;
+            const destY = originY + (Math.random() - 0.4) * 40;
+            const delay = 0.1 + Math.random() * 0.4;
+            const color = i % 3 === 0 ? "#ff2222" : i % 3 === 1 ? "#ff5533" : "#dd1100";
+            return (
+              <div
+                key={`bigfrag-${i}`}
+                className="absolute"
+                style={{
+                  left: `${originX}%`,
+                  top: `${originY}%`,
+                  width: `${10 + Math.random() * 12}px`,
+                  height: `${8 + Math.random() * 10}px`,
+                  backgroundColor: color,
+                  boxShadow: `0 0 8px ${color}99, 0 0 16px ${color}55`,
+                  clipPath: `polygon(${Math.random() * 30}% 0%, 100% ${Math.random() * 40}%, ${70 + Math.random() * 30}% 100%, 0% ${60 + Math.random() * 40}%)`,
+                  transition: `all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`,
+                  transform: `translate(${(destX - originX) * 3}px, ${(destY - originY) * 3}px) rotate(${Math.random() * 540 - 270}deg) scale(${0.3 + Math.random() * 0.5})`,
+                  opacity: 0,
+                }}
+              />
+            );
+          })}
+
+          {/* Flash rosso sull'area della mano — effetto esplosione iniziale */}
+          <div
+            className="absolute left-0 top-[15%] w-[45%] h-[65%]"
+            style={{
+              background: "radial-gradient(ellipse at 50% 50%, rgba(255,50,30,0.25) 0%, transparent 70%)",
+              animation: "explosionFlash 0.6s ease-out forwards",
+            }}
+          />
         </div>
       )}
 
-      {/* CSS Keyframes per hover pulsante lento dello scudo */}
+      {/* CSS Keyframes */}
       <style>{`
         @keyframes shieldPulse {
           0%, 100% { transform: scale(1); filter: drop-shadow(0 0 12px rgba(0, 100, 255, 0.6)); }
           50% { transform: scale(1.06); filter: drop-shadow(0 0 18px rgba(0, 150, 255, 0.8)); }
+        }
+        @keyframes explosionFlash {
+          0% { opacity: 0; transform: scale(0.5); }
+          30% { opacity: 1; transform: scale(1.1); }
+          100% { opacity: 0; transform: scale(1.3); }
         }
       `}</style>
     </div>
