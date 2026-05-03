@@ -1,13 +1,10 @@
 export function PsicoSupportoSection() {
   return (
-    <section id="psico-supporto" className="py-16 sm:py-20 px-4 sm:px-5 relative overflow-hidden">
+    <section id="psico-supporto" className="pt-4 pb-16 sm:pb-20 px-4 sm:px-5 relative overflow-hidden">
       <div className="max-w-[1000px] mx-auto">
 
-        {/* Header */}
-        <header className="text-center mb-6 animate-fadeInUp">
-          <div className="inline-block bg-[#00d4ff]/10 border border-[#00d4ff]/30 rounded-full px-5 py-2 text-xs text-[#00d4ff] uppercase tracking-[2px] mb-5">
-            Nuovo Servizio Gratuito
-          </div>
+        {/* Titolo — prima stringa di lettura */}
+        <header className="text-center mb-5 animate-fadeInUp">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-0 leading-tight">
             Psico-Supporto alle <span className="text-[#00d4ff]">Vittime di Truffe</span>
           </h1>
