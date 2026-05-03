@@ -64,45 +64,18 @@ export function HandsOverlay() {
       {/* Posizione: centro orizzontale (~300), sotto le dita (~310) */}
       {/* Dimensione 3x: circa 72x60 */}
       {/* ========================================= */}
-      <g transform="translate(300, 330)" opacity="0.9">
-        {/* Cervello rosa — SVG path dettagliato */}
-        <g transform="translate(-36, -30) scale(1.5)">
-          {/* Emisfero sinistro */}
-          <path
-            d="M24 8 C18 4, 10 6, 8 12 C5 14, 3 18, 4 22 C2 24, 1 28, 3 32 C4 36, 8 39, 12 38 C14 40, 18 42, 22 40 C24 41, 24 41, 24 40"
-            fill="none"
-            stroke="#ff6b9d"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            opacity="0.95"
-          />
-          {/* Emisfero destro */}
-          <path
-            d="M24 8 C30 4, 38 6, 40 12 C43 14, 45 18, 44 22 C46 24, 47 28, 45 32 C44 36, 40 39, 36 38 C34 40, 30 42, 26 40 C24 41, 24 41, 24 40"
-            fill="none"
-            stroke="#ff6b9d"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            opacity="0.95"
-          />
-          {/* Solco centrale */}
-          <line x1="24" y1="6" x2="24" y2="41" stroke="#ff6b9d" strokeWidth="1" opacity="0.5" />
-          {/* Pieghe cerebrali sinistre */}
-          <path d="M10 16 Q16 18, 22 15" fill="none" stroke="#ff6b9d" strokeWidth="1" opacity="0.6" />
-          <path d="M6 24 Q14 27, 22 23" fill="none" stroke="#ff6b9d" strokeWidth="1" opacity="0.6" />
-          <path d="M8 32 Q15 34, 22 31" fill="none" stroke="#ff6b9d" strokeWidth="1" opacity="0.6" />
-          {/* Pieghe cerebrali destre */}
-          <path d="M26 15 Q32 18, 38 16" fill="none" stroke="#ff6b9d" strokeWidth="1" opacity="0.6" />
-          <path d="M26 23 Q34 27, 42 24" fill="none" stroke="#ff6b9d" strokeWidth="1" opacity="0.6" />
-          <path d="M26 31 Q33 34, 40 32" fill="none" stroke="#ff6b9d" strokeWidth="1" opacity="0.6" />
-          {/* Riempimento semitrasparente */}
-          <path
-            d="M24 8 C18 4, 10 6, 8 12 C5 14, 3 18, 4 22 C2 24, 1 28, 3 32 C4 36, 8 39, 12 38 C14 40, 18 42, 22 40 L24 40 L26 40 C30 42, 34 40, 36 38 C40 39, 44 36, 45 32 C47 28, 46 24, 44 22 C45 18, 43 14, 40 12 C38 6, 30 4, 24 8 Z"
-            fill="#ff6b9d"
-            opacity="0.12"
-          />
-        </g>
-      </g>
+      {/* Cervello emoji rosa piena 3x — stessa icona della sezione "Perché è successo a te" */}
+      <text
+        x="300"
+        y="345"
+        fontSize="72"
+        textAnchor="middle"
+        dominantBaseline="central"
+        opacity="0.95"
+        style={{ filter: "drop-shadow(0 0 8px rgba(255, 107, 157, 0.4))" }}
+      >
+        🧠
+      </text>
 
       {/* ========================================= */}
       {/* 2. LINEA ELETTRICA CIANO + SCUDO dal dito destro al cervello */}
