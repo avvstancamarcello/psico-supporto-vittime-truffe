@@ -16,6 +16,18 @@ export function PsicoSupportoSection() {
           </p>
         </header>
 
+        {/* Frase chiave — massima visibilità */}
+        <div className="text-center mb-8 animate-fadeInUp">
+          <span className="block text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0099cc] bg-clip-text text-transparent leading-snug">
+            Non sei stato ingenuo. Sei stato manipolato da professionisti dell'inganno.
+          </span>
+        </div>
+
+        {/* Icona mani — elemento iconico */}
+        <div className="text-center mb-10 animate-fadeInUp">
+          <span className="text-6xl sm:text-7xl inline-block" role="img" aria-label="Due mani che si stringono">🤲</span>
+        </div>
+
         {/* Intro Block */}
         <div className="bg-[#00d4ff]/[0.04] border border-[#00d4ff]/15 rounded-2xl p-8 mb-12 text-center animate-fadeInUp animation-delay-100">
           <p className="text-base text-white/75 max-w-[800px] mx-auto">
@@ -25,9 +37,6 @@ export function PsicoSupportoSection() {
             da organizzazioni criminali che utilizzano tecniche psicologiche sofisticate,
             studiate per aggirare le difese razionali di chiunque.
           </p>
-          <span className="block mt-5 text-xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0099cc] bg-clip-text text-transparent">
-            Non sei stato ingenuo. Sei stato manipolato da professionisti dell'inganno.
-          </span>
         </div>
 
         {/* Technique Cards */}
