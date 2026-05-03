@@ -83,12 +83,12 @@ export function ChatAccessPopup() {
 
 export function ChatBanner({ onClick }: { onClick: () => void }) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 p-3 sm:p-4">
+    <div className="px-4 py-4 sm:py-5">
       <button
         onClick={onClick}
-        className="w-full max-w-[700px] mx-auto flex items-center justify-center gap-3 bg-gradient-to-r from-[#0a1628] to-[#0f1f3a] border border-[#00d4ff]/30 rounded-xl py-3.5 sm:py-4 px-5 transition-all duration-300 hover:border-[#00d4ff]/60 hover:shadow-[0_8px_30px_rgba(0,212,255,0.2)] hover:-translate-y-0.5 group"
+        className="w-full max-w-[700px] mx-auto flex items-center justify-center gap-3 bg-gradient-to-r from-[#0a1628] to-[#0f1f3a] border border-[#00d4ff]/30 rounded-xl py-3 sm:py-3.5 px-5 transition-all duration-300 hover:border-[#00d4ff]/60 hover:shadow-[0_8px_30px_rgba(0,212,255,0.2)] hover:-translate-y-0.5 group"
       >
-        <span className="text-2xl sm:text-3xl">🔐</span>
+        <span className="text-xl sm:text-2xl">🔐</span>
         <span className="text-sm sm:text-base font-semibold text-[#00d4ff] group-hover:text-white transition-colors">
           Accedi con un click alla tua chat responsiva, riservata e cifrata
         </span>

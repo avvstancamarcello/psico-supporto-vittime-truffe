@@ -15,13 +15,13 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: "linear-gradient(180deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%)" }}>
       <Header />
+      <ChatAccessPopup />
       <main>
         <PsicoSupportoSection />
         <BuoneNotizieSection />
         <CTASection />
       </main>
       <Footer />
-      <ChatAccessPopup />
     </div>
   );
 }
