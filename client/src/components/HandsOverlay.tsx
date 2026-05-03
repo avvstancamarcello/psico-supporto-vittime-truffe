@@ -130,8 +130,8 @@ export function HandsOverlay() {
           </path>
         </g>
 
-        {/* Scudo protettivo — ALLARGATO per evitare contatto col cervello */}
-        <g filter="url(#shield-glow)">
+        {/* Scudo protettivo — ridotto del 10% (scale 0.9 centrato su 300,310) */}
+        <g filter="url(#shield-glow)" transform="translate(300, 310) scale(0.9) translate(-300, -310)">
           <path
             d="M 245 270 
                C 230 285, 225 305, 232 325 
@@ -167,7 +167,7 @@ export function HandsOverlay() {
             )}
           </path>
 
-          {/* Scudo inner glow */}
+          {/* Scudo inner glow — ridotto 10% */}
           <path
             d="M 252 275 
                C 238 288, 234 306, 240 322 
@@ -289,7 +289,7 @@ export function HandsOverlay() {
           animationDone ? "opacity-100" : "opacity-0"
         }`}
       >
-        {/* Mano rossa che prova a catturare — posizionata a sinistra */}
+        {/* Mano rossa che si ferma — area centrale superiore, a destra dello scudo */}
         <picture>
           <source
             media="(max-width: 640px)"
@@ -297,8 +297,8 @@ export function HandsOverlay() {
           />
           <img
             src="/manus-storage/redhand-desktop_01cd5e23.webp"
-            alt="Mano rossa criminale che tenta di catturare lo scudo"
-            className="absolute bottom-[10%] left-[2%] w-[28%] sm:w-[25%] rounded-lg opacity-85 drop-shadow-[0_0_12px_rgba(255,50,50,0.5)]"
+            alt="Mano rossa criminale che si ferma davanti allo scudo"
+            className="absolute top-[8%] left-[50%] -translate-x-1/2 w-[30%] sm:w-[26%] rounded-lg opacity-85 drop-shadow-[0_0_12px_rgba(255,50,50,0.5)]"
             loading="lazy"
             width="170"
             height="150"
