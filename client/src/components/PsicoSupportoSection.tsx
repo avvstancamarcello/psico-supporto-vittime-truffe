@@ -210,14 +210,22 @@ export function PsicoSupportoSection() {
             </h3>
             <p className="text-[0.95rem] text-white/75 leading-relaxed">
               L'Avv. Marcello Stanca ha presentato al Parlamento Europeo le Petizioni
-              n. <span className="inline-block bg-[#ffd700]/12 border border-[#ffd700]/30 rounded px-2 py-0.5 font-mono font-bold text-[#ffd700] text-sm">0888/2024</span> e
-              n. <span className="inline-block bg-[#ffd700]/12 border border-[#ffd700]/30 rounded px-2 py-0.5 font-mono font-bold text-[#ffd700] text-sm">0645/2025</span>,
+              n. <a href="https://www.europarl.europa.eu/petitions/en/petition/content/0888%252F2024/html/Petition-No-0888%252F2024-by-Marcello-Stanca-%2528Italian%2529%252C-on-behalf-of-AMEV-Florence%252C-on-banks%25E2%2580%2599-duty-to-protect-customers-against-fake-online-investments" target="_blank" rel="noopener noreferrer" className="inline-block bg-[#ffd700]/12 border border-[#ffd700]/30 rounded px-2 py-0.5 font-mono font-bold text-[#ffd700] text-sm hover:bg-[#ffd700]/25 hover:scale-105 transition-all duration-200 cursor-pointer">0888/2024</a> e
+              n. <a href="https://www.europarl.europa.eu/petitions/en/petition/content/0645%252F2025/html/Petition-No%25C2%25A00645%252F2025-by-Marcello-Stanca-%2528Italian%2529%252C-on-behalf-of-%25E2%2580%2598Associazione%25C2%25A0Amev%25C2%25A0Firenze%25E2%2580%2599%252C-on-measures-to-tackle-financial-scams-carried-out-through-bank-transfers-and-credit-cards-in-the-EU" target="_blank" rel="noopener noreferrer" className="inline-block bg-[#ffd700]/12 border border-[#ffd700]/30 rounded px-2 py-0.5 font-mono font-bold text-[#ffd700] text-sm hover:bg-[#ffd700]/25 hover:scale-105 transition-all duration-200 cursor-pointer">0645/2025</a>,
               chiedendo l'adozione di normative che obblighino le banche a proteggere attivamente i propri clienti
               dalle truffe finanziarie online. Le petizioni evidenziano come gli istituti di credito,
               pur disponendo degli strumenti per individuare operazioni sospette, spesso omettano
               di intervenire tempestivamente, lasciando i risparmiatori esposti alla manipolazione
               di organizzazioni criminali internazionali.
             </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <a href="https://www.europarl.europa.eu/petitions/en/petition/content/0888%252F2024/html/Petition-No-0888%252F2024-by-Marcello-Stanca-%2528Italian%2529%252C-on-behalf-of-AMEV-Florence%252C-on-banks%25E2%2580%2599-duty-to-protect-customers-against-fake-online-investments" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#ffd700]/10 border border-[#ffd700]/30 rounded-lg px-4 py-2 text-[#ffd700] text-sm font-semibold hover:bg-[#ffd700]/20 hover:border-[#ffd700]/50 transition-all duration-200">
+                <span>📄</span> Leggi Petizione 0888/2024
+              </a>
+              <a href="https://www.europarl.europa.eu/petitions/en/petition/content/0645%252F2025/html/Petition-No%25C2%25A00645%252F2025-by-Marcello-Stanca-%2528Italian%2529%252C-on-behalf-of-%25E2%2580%2598Associazione%25C2%25A0Amev%25C2%25A0Firenze%25E2%2580%2599%252C-on-measures-to-tackle-financial-scams-carried-out-through-bank-transfers-and-credit-cards-in-the-EU" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#ffd700]/10 border border-[#ffd700]/30 rounded-lg px-4 py-2 text-[#ffd700] text-sm font-semibold hover:bg-[#ffd700]/20 hover:border-[#ffd700]/50 transition-all duration-200">
+                <span>📄</span> Leggi Petizione 0645/2025
+              </a>
+            </div>
           </div>
         </div>
 
