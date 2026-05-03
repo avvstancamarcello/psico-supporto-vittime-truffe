@@ -16,23 +16,20 @@ export default function Home() {
     <div className="min-h-screen" style={{ background: "linear-gradient(180deg, #1a1a2e 0%, #16162a 50%, #0f0f1a 100%)" }}>
       <Header />
       <ChatAccessPopup />
-      {/* AdSense Advertisement Box */}
+      {/* Banner Libro Rischio Trading - Amazon */}
       <div className="px-4 py-3 flex justify-center">
-        <div className="w-full max-w-[728px] min-h-[90px] bg-[#0d0d1f] border border-white/[0.06] rounded-lg flex items-center justify-center overflow-hidden relative">
-          {/* Google AdSense - Sostituire data-ad-client e data-ad-slot con i propri valori */}
-          <ins
-            className="adsbygoogle block w-full h-full"
-            style={{ display: 'block', minHeight: '90px' }}
-            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-            data-ad-slot="XXXXXXXXXX"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
+        <a
+          href="https://www.amazon.it/Rischio-Trading-Attraverso-Strumenti-Recupero-ebook/dp/B0DQRB8VQY"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full max-w-[728px] rounded-lg overflow-hidden border border-[#00d4ff]/20 hover:border-[#00d4ff]/50 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(0,212,255,0.15)] hover:-translate-y-0.5"
+        >
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587145031/5yj3D9dfw7zdStNbdyMzWk/banner-rischio-trading-real-ZThgApEsBx5xM2ymvWyhvf.webp"
+            alt="Rischio Trading - Il Manuale di Attacco e Difesa - Bestseller Amazon di Avv. Marcello Stanca - Acquista su Amazon"
+            className="w-full h-auto object-cover"
           />
-          {/* Placeholder visibile finché AdSense non è attivo */}
-          <div className="absolute inset-0 flex items-center justify-center text-white/20 text-xs tracking-wider uppercase pointer-events-none">
-            Advertisement
-          </div>
-        </div>
+        </a>
       </div>
       <main>
         <PsicoSupportoSection />
