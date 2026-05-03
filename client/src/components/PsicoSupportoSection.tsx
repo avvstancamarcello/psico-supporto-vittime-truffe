@@ -6,6 +6,7 @@
 
 import { SectionLabel } from "@/components/SectionNav";
 import { BookBannerSlim } from "@/components/BookBannerSlim";
+import { HandsOverlay } from "@/components/HandsOverlay";
 
 export function PsicoSupportoSection() {
   return (
@@ -22,9 +23,9 @@ export function PsicoSupportoSection() {
             <p className="text-sm text-white/30 mt-2">Assistenza gratuita per vittime di truffe finanziarie e trading online fraudolento</p>
           </header>
 
-          {/* Immagine mani */}
+          {/* Immagine mani con overlay SVG animato */}
           <div className="flex justify-center mb-6 animate-fadeInUp">
-            <div className="w-full max-w-[600px] rounded-2xl overflow-hidden border border-[#00d4ff]/15">
+            <div className="w-full max-w-[600px] rounded-2xl overflow-hidden border border-[#00d4ff]/15 relative">
               <img
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587145031/5yj3D9dfw7zdStNbdyMzWk/hands-reaching-cN3pQFt7yYdnix6UuNvKPL.webp"
                 alt="Psico-supporto vittime truffe finanziarie online - due mani che si tendono in segno di aiuto e solidarietà"
@@ -33,6 +34,7 @@ export function PsicoSupportoSection() {
                 height="400"
                 className="w-full h-auto object-cover"
               />
+              <HandsOverlay />
             </div>
           </div>
 
