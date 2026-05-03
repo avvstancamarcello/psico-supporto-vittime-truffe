@@ -280,32 +280,10 @@ export function HandsOverlay() {
       </svg>
 
       {/* ========================================= */}
-      {/* 4. IMMAGINI POST-LOOP — compaiono dopo la fine dell'animazione */}
-      {/* Scudo "MS Financial Defense" a destra, mano rossa a sinistra */}
-      {/* WebP ottimizzate, responsive con srcSet */}
+      {/* 4. SCUDO SEMPRE VISIBILE a destra */}
       {/* ========================================= */}
-      <div
-        className={`absolute inset-0 transition-opacity duration-1000 ${
-          animationDone ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        {/* Mano rossa — piccola, in basso a sinistra del cervello */}
-        <picture>
-          <source
-            media="(max-width: 640px)"
-            srcSet="/manus-storage/redhand-mobile_fb50b80a.webp"
-          />
-          <img
-            src="/manus-storage/redhand-desktop_01cd5e23.webp"
-            alt="Mano rossa criminale che si ferma davanti allo scudo"
-            className="absolute bottom-[12%] left-[18%] w-[15%] sm:w-[13%] rounded-md opacity-80 drop-shadow-[0_0_8px_rgba(255,50,50,0.4)]"
-            loading="lazy"
-            width="90"
-            height="80"
-          />
-        </picture>
-
-        {/* Scudo MS Financial Defense — piccolo, in basso a destra del cervello */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Scudo MS Financial Defense — sempre visibile, a destra */}
         <picture>
           <source
             media="(max-width: 640px)"
@@ -314,10 +292,36 @@ export function HandsOverlay() {
           <img
             src="/manus-storage/shield-desktop_b8780f63.webp"
             alt="Scudo MS Financial Defense - protezione finanziaria"
-            className="absolute bottom-[12%] right-[18%] w-[14%] sm:w-[12%] rounded-md opacity-85 drop-shadow-[0_0_8px_rgba(0,100,255,0.4)]"
+            className="absolute top-[50%] -translate-y-1/2 right-[3%] w-[13%] sm:w-[11%] rounded-md opacity-90 drop-shadow-[0_0_10px_rgba(0,100,255,0.5)]"
+            loading="eager"
+            width="80"
+            height="85"
+          />
+        </picture>
+      </div>
+
+      {/* ========================================= */}
+      {/* 5. MANO ROSSA — slide dall'alto verso il basso, centro superiore, dopo il loop */}
+      {/* ========================================= */}
+      <div
+        className={`absolute inset-0 pointer-events-none transition-all duration-1000 ease-out ${
+          animationDone
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-[40px]"
+        }`}
+      >
+        <picture>
+          <source
+            media="(max-width: 640px)"
+            srcSet="/manus-storage/redhand-mobile_fb50b80a.webp"
+          />
+          <img
+            src="/manus-storage/redhand-desktop_01cd5e23.webp"
+            alt="Mano rossa criminale che si ferma prima dello scudo"
+            className="absolute top-[5%] left-[50%] -translate-x-1/2 w-[16%] sm:w-[14%] rounded-md opacity-85 drop-shadow-[0_0_10px_rgba(255,50,50,0.5)]"
             loading="lazy"
             width="90"
-            height="95"
+            height="80"
           />
         </picture>
       </div>
