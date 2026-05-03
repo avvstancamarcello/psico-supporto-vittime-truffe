@@ -26,8 +26,9 @@ export function PsicoSupportoSection() {
 
         {/* Sottotitoli */}
         <div className="text-center mb-6 animate-fadeInUp">
-          <p className="text-lg sm:text-xl text-white/60 italic max-w-[600px] mx-auto">
-            Capire il "perché" è il primo passo per guarire
+          <p className="text-lg sm:text-xl text-white/60 italic font-bold max-w-[600px] mx-auto leading-relaxed">
+            Capire il "perché"<br />
+            è il primo passo per guarire
           </p>
         </div>
 
