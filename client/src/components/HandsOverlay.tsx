@@ -1,24 +1,61 @@
 /**
  * HandsOverlay — SVG overlay sull'immagine delle mani
- * 1. Cervello rosa emoji 3x — spostato 30px in alto rispetto alla versione precedente
- * 2. Linea elettrica ciano + scudo allargato (senza contatto col cervello) — 2 loop
+ * 1. Cervello rosa emoji 3x — spostato 30px in alto
+ * 2. Linea elettrica ciano + scudo SVG (senza contatto col cervello) — 2 loop
  * 3. Simboli valuta gialli/verdi intorno alla mano rossa (perdite finanziarie)
- * 4. Post-loop: scudo "MS Financial Defense" a destra + mano rossa a sinistra
- *
- * Le immagini post-loop sono WebP ottimizzate (5-7KB) e non degradano la velocità.
- * Su mobile usano versioni ancora più piccole (2-3KB).
+ * 4. Scudo "MS Financial Defense" — in basso a destra, allineato al cervello,
+ *    centrato tra cervello e bordo destro. Espansione lenta a 125% + hover pulsante.
+ * 5. Mano rossa — slide dall'alto, poi si disgrega in esplosione di frazioni rosse (2s)
+ *    → Vittoria dello scudo contro lo scammer.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export function HandsOverlay() {
   const [animationDone, setAnimationDone] = useState(false);
+  const [shieldExpanded, setShieldExpanded] = useState(false);
+  const [handExploding, setHandExploding] = useState(false);
+  const [handGone, setHandGone] = useState(false);
+  const particlesRef = useRef<Array<{ x: number; y: number; rot: number; scale: number; delay: number }>>([]);
+
+  // Genera particelle casuali per l'esplosione della mano rossa
+  if (particlesRef.current.length === 0) {
+    particlesRef.current = Array.from({ length: 24 }, () => ({
+      x: (Math.random() - 0.5) * 200,
+      y: (Math.random() - 0.5) * 200,
+      rot: Math.random() * 360,
+      scale: 0.3 + Math.random() * 0.7,
+      delay: Math.random() * 0.3,
+    }));
+  }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Dopo 6s (fine loop animazione): mostra mano rossa + scudo
+    const timerDone = setTimeout(() => {
       setAnimationDone(true);
-    }, 6000); // 2 loop x 3s = 6s
-    return () => clearTimeout(timer);
+    }, 6000);
+
+    // Dopo 8s: scudo inizia espansione lenta a 125%
+    const timerExpand = setTimeout(() => {
+      setShieldExpanded(true);
+    }, 8000);
+
+    // Dopo 9s: mano rossa inizia a disgregarsi
+    const timerExplode = setTimeout(() => {
+      setHandExploding(true);
+    }, 9000);
+
+    // Dopo 11s: mano rossa completamente scomparsa
+    const timerGone = setTimeout(() => {
+      setHandGone(true);
+    }, 11000);
+
+    return () => {
+      clearTimeout(timerDone);
+      clearTimeout(timerExpand);
+      clearTimeout(timerExplode);
+      clearTimeout(timerGone);
+    };
   }, []);
 
   return (
@@ -60,7 +97,7 @@ export function HandsOverlay() {
         </defs>
 
         {/* ========================================= */}
-        {/* 1. CERVELLO ROSA EMOJI 3x — spostato 30px in alto (y: 345 → 315) */}
+        {/* 1. CERVELLO ROSA EMOJI 3x */}
         {/* ========================================= */}
         <text
           x="300"
@@ -75,10 +112,9 @@ export function HandsOverlay() {
         </text>
 
         {/* ========================================= */}
-        {/* 2. LINEA ELETTRICA CIANO + SCUDO (allargato, senza contatto col cervello) */}
+        {/* 2. LINEA ELETTRICA CIANO + SCUDO SVG */}
         {/* ========================================= */}
         <g filter="url(#electric-glow)">
-          {/* Linea elettrica dalla punta del dito — termina più in alto */}
           <path
             d="M 380 195 
                C 370 210, 360 225, 350 245 
@@ -109,7 +145,6 @@ export function HandsOverlay() {
             )}
           </path>
 
-          {/* Effetto zigzag elettrico */}
           <path
             d="M 375 200 L 370 208 L 378 212 L 365 225 L 373 228 L 358 245 L 366 248 L 350 260 L 345 268 L 330 278"
             fill="none"
@@ -130,7 +165,7 @@ export function HandsOverlay() {
           </path>
         </g>
 
-        {/* Scudo protettivo — ridotto del 10% (scale 0.9 centrato su 300,310) */}
+        {/* Scudo protettivo SVG — ridotto 10% */}
         <g filter="url(#shield-glow)" transform="translate(300, 310) scale(0.9) translate(-300, -310)">
           <path
             d="M 245 270 
@@ -167,7 +202,6 @@ export function HandsOverlay() {
             )}
           </path>
 
-          {/* Scudo inner glow — ridotto 10% */}
           <path
             d="M 252 275 
                C 238 288, 234 306, 240 322 
@@ -190,7 +224,6 @@ export function HandsOverlay() {
             )}
           </path>
 
-          {/* Scintille */}
           {[
             { cx: 240, cy: 290, delay: "0.5s" },
             { cx: 360, cy: 290, delay: "1s" },
@@ -280,51 +313,110 @@ export function HandsOverlay() {
       </svg>
 
       {/* ========================================= */}
-      {/* 4. SCUDO SEMPRE VISIBILE a destra */}
+      {/* 4. SCUDO MS Financial Defense — in basso a destra, allineato al cervello */}
+      {/* Centrato nella distanza tra cervello e bordo destro */}
+      {/* Espansione lenta a 125% + hover pulsante lento */}
       {/* ========================================= */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Scudo MS Financial Defense — sempre visibile, a destra */}
-        <picture>
-          <source
-            media="(max-width: 640px)"
-            srcSet="/manus-storage/shield-mobile_9a3188a9.webp"
-          />
-          <img
-            src="/manus-storage/shield-desktop_b8780f63.webp"
-            alt="Scudo MS Financial Defense - protezione finanziaria"
-            className="absolute top-[50%] -translate-y-1/2 right-[3%] w-[13%] sm:w-[11%] rounded-md opacity-90 drop-shadow-[0_0_10px_rgba(0,100,255,0.5)]"
-            loading="eager"
-            width="80"
-            height="85"
-          />
-        </picture>
+        <div
+          className="absolute bottom-[22%] right-[12%] sm:right-[15%]"
+          style={{
+            transition: "transform 2s ease-out, opacity 1s ease-out",
+            transform: shieldExpanded ? "scale(1.25)" : "scale(1)",
+            opacity: 1,
+          }}
+        >
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcSet="/manus-storage/shield-mobile_9a3188a9.webp"
+            />
+            <img
+              src="/manus-storage/shield-desktop_b8780f63.webp"
+              alt="Scudo MS Financial Defense - protezione finanziaria"
+              className="w-[60px] sm:w-[75px] md:w-[85px] rounded-md drop-shadow-[0_0_12px_rgba(0,100,255,0.6)]"
+              style={{
+                animation: shieldExpanded ? "shieldPulse 3s ease-in-out infinite" : "none",
+              }}
+              loading="eager"
+              width="85"
+              height="90"
+            />
+          </picture>
+        </div>
       </div>
 
       {/* ========================================= */}
-      {/* 5. MANO ROSSA — slide dall'alto verso il basso, centro superiore, dopo il loop */}
+      {/* 5. MANO ROSSA — slide dall'alto, poi disgregazione esplosiva */}
       {/* ========================================= */}
-      <div
-        className={`absolute inset-0 pointer-events-none transition-all duration-1000 ease-out ${
-          animationDone
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-[40px]"
-        }`}
-      >
-        <picture>
-          <source
-            media="(max-width: 640px)"
-            srcSet="/manus-storage/redhand-mobile_fb50b80a.webp"
-          />
-          <img
-            src="/manus-storage/redhand-desktop_01cd5e23.webp"
-            alt="Mano rossa criminale che si ferma prima dello scudo"
-            className="absolute top-[5%] left-[50%] -translate-x-1/2 w-[16%] sm:w-[14%] rounded-md opacity-85 drop-shadow-[0_0_10px_rgba(255,50,50,0.5)]"
-            loading="lazy"
-            width="90"
-            height="80"
-          />
-        </picture>
-      </div>
+      {!handGone && (
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            transition: animationDone ? "opacity 1s ease-out" : "none",
+            opacity: animationDone ? 1 : 0,
+          }}
+        >
+          {/* Mano rossa intera — visibile fino all'esplosione */}
+          {!handExploding && (
+            <div
+              className="absolute top-[5%] left-[50%]"
+              style={{
+                transform: "translateX(-50%)",
+                transition: "all 1s ease-out",
+                opacity: animationDone ? 0.85 : 0,
+              }}
+            >
+              <picture>
+                <source
+                  media="(max-width: 640px)"
+                  srcSet="/manus-storage/redhand-mobile_fb50b80a.webp"
+                />
+                <img
+                  src="/manus-storage/redhand-desktop_01cd5e23.webp"
+                  alt="Mano rossa criminale che si ferma prima dello scudo"
+                  className="w-[55px] sm:w-[70px] md:w-[80px] rounded-md drop-shadow-[0_0_10px_rgba(255,50,50,0.5)]"
+                  loading="lazy"
+                  width="80"
+                  height="72"
+                />
+              </picture>
+            </div>
+          )}
+
+          {/* Esplosione — frazioni rosse che si disperdono */}
+          {handExploding && (
+            <div
+              className="absolute top-[5%] left-[50%]"
+              style={{ transform: "translateX(-50%)" }}
+            >
+              {particlesRef.current.map((p, i) => (
+                <div
+                  key={`particle-${i}`}
+                  className="absolute w-[6px] h-[6px] sm:w-[8px] sm:h-[8px] rounded-sm"
+                  style={{
+                    backgroundColor: i % 3 === 0 ? "#ff3333" : i % 3 === 1 ? "#ff6644" : "#cc2200",
+                    boxShadow: "0 0 4px rgba(255, 50, 50, 0.6)",
+                    transition: `all 2s ease-out ${p.delay}s`,
+                    transform: handExploding
+                      ? `translate(${p.x}px, ${p.y}px) rotate(${p.rot}deg) scale(${p.scale})`
+                      : "translate(0, 0) rotate(0deg) scale(1)",
+                    opacity: handExploding ? 0 : 0.9,
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* CSS Keyframes per hover pulsante lento dello scudo */}
+      <style>{`
+        @keyframes shieldPulse {
+          0%, 100% { transform: scale(1); filter: drop-shadow(0 0 12px rgba(0, 100, 255, 0.6)); }
+          50% { transform: scale(1.06); filter: drop-shadow(0 0 18px rgba(0, 150, 255, 0.8)); }
+        }
+      `}</style>
     </div>
   );
 }
